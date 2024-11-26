@@ -32,7 +32,8 @@ void priorityNONPRE(vector<process> &proc, int n)
         if (proc[i].arrival < current)
             current = proc[i].arrival;
 
-        proc[i].completion = current;
+        proc[i].completion = current + proc[i].burst;
+        current = proc[i].completion;
         proc[i].tat = proc[i].completion - proc[i].arrival;
         proc[i].waiting = proc[i].tat - proc[i].burst;
     }
